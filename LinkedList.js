@@ -9,7 +9,7 @@ class LinkedList {
     this.head = newNode
     this.length++
   }
-// big O = O(n)
+  // big O = O(n)
   getByIndex(index) {
     if(index < 0 || index >= this.length) return null
 
@@ -21,7 +21,7 @@ class LinkedList {
 
     return current
   }
-// big O = 0(n)
+  // big O = 0(n)
   insertAtIndex(index, value) {
     if(index === 0) return this.insertAtHead(value)
 
@@ -30,6 +30,22 @@ class LinkedList {
 
     prev.next = new LinkedListNode(value, prev.next)
     this.length++
+  }
+
+    // big O = O(1)
+  removeHead() {
+    this.head = this.head.next
+    this.length--
+  }
+  // big O = O(n)
+  removeAtIndex(index) {
+    if(index === 0) return this.removeHead()
+  
+    const prev = this.getByIndex(index - 1)
+    if(prev == null) return null
+
+    prev.next = prev.next.next
+    this.length--
   }
 
   print() {
